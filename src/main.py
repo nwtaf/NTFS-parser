@@ -1,8 +1,13 @@
 import pandas as pd
+import os
 
+# Check if the file exists
+file_name = r"C:\Users\Nathan\OneDrive - Umich\Desktop\NTFS-parser\src\ntfs_sector.txt"
+if not os.path.isfile(file_name):
+    print(f"File {file_name} not found")
+    
 # Read the data from the file
 data = []
-file_name = "ntfs_sector.txt"
 with open(file_name, 'r') as f:
     data = f.readlines()
 
@@ -26,7 +31,7 @@ for line in data:
 df = pd.DataFrame(data=parts, columns=['address', 'hex data', 'string data'])
 
 # Print the dataframe for debug purposes
-print(df['hex data'].to_string(index=False))
+# print(df['hex data'].to_string(index=False))
 
 first_sector = ''.join(df['hex data'])
 
