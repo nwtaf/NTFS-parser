@@ -1,14 +1,17 @@
 import pandas as pd
-import os
+from pathlib import Path
+
+file_path = Path(r'src/ntfs_sector.txt')
 
 # Check if the file exists
-file_name = r"C:\Users\Nathan\OneDrive - Umich\Desktop\NTFS-parser\src\ntfs_sector.txt"
-if not os.path.isfile(file_name):
-    print(f"File {file_name} not found")
+if file_path.exists():
+    print("File exists")
+else:
+    raise FileNotFoundError(f"The file {file_path} does not exist")
     
 # Read the data from the file
 data = []
-with open(file_name, 'r') as f:
+with open(file_path, 'r') as f:
     data = f.readlines()
 
 # Split the data into three parts
